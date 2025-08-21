@@ -17,6 +17,7 @@
 // SPDX-License-Identifier: MIT
 
 using System.Numerics;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Singularity.Components;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Ghost;
@@ -41,6 +42,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     #region Dependencies
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IViewVariablesManager _vvManager = default!;
+    [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -248,7 +250,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
                 continue;
             }
 
-            if (TryComp<MovedByPressureComponent>(entity, out var movedPressure) && !movedPressure.Enabled) //Ignore magboots users
+            if (!_atmos.IsMovableByWind(entity))
                 continue;
 
             if(!CanGravPulseAffect(entity))

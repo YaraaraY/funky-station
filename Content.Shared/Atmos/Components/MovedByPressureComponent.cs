@@ -5,7 +5,6 @@
 
 namespace Content.Shared.Atmos.Components;
 
-// Unfortunately can't be friends yet due to magboots.
 [RegisterComponent]
 public sealed partial class MovedByPressureComponent : Component
 {
@@ -33,4 +32,3 @@ public sealed partial class MovedByPressureComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public int LastHighPressureMovementAirCycle { get; set; } = 0;
 }
-
