@@ -419,7 +419,6 @@ namespace Content.Server.Atmos.EntitySystems
                     return false;
             }
 
-            ent.Comp1.SpaceWindTiles.Clear();
             return true;
         }
 
