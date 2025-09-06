@@ -31,6 +31,7 @@ namespace Content.Server.Atmos.EntitySystems
         public float SpaceWindMinimumCalculatedMass { get; private set; } // Goobstation - Spacewind Cvars
         public float SpaceWindMaximumCalculatedInverseMass { get; private set; } // Goobstation - Spacewind Cvars
         public bool MonstermosUseExpensiveAirflow { get; private set; } // Goobstation - Spacewind Cvars
+        public float SpaceWindVacuumPull { get; private set; }
         public bool MonstermosEqualization { get; private set; }
         public bool MonstermosDepressurization { get; private set; }
         public bool MonstermosRipTiles { get; private set; }
@@ -64,6 +65,7 @@ namespace Content.Server.Atmos.EntitySystems
             Subs.CVar(_cfg, CCVars.SpaceWindSoundCooldown, value => SpaceWindSoundCooldown = TimeSpan.FromSeconds(value), true);
             Subs.CVar(_cfg, CCVars.SpaceWindSoundRange, value => SpaceWindSoundRange = value, true);
             Subs.CVar(_cfg, CCVars.SpaceWindMaxVelocity, value => SpaceWindMaxVelocity = value, true);
+            Subs.CVar(_cfg, CCVars.SpaceWindVacuumPull, value => SpaceWindVacuumPull = value, true);
             Subs.CVar(_cfg, CCVars.MonstermosEqualization, value => MonstermosEqualization = value, true);
             Subs.CVar(_cfg, CCVars.MonstermosDepressurization, value => MonstermosDepressurization = value, true);
             Subs.CVar(_cfg, CCVars.MonstermosRipTiles, value => MonstermosRipTiles = value, true);
