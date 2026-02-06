@@ -540,7 +540,9 @@ namespace Content.Server.Atmos.EntitySystems
                     ent.Comp1.SpaceWindTiles.Add(otherTile);
 
                 if (otherTile2.MonstermosInfo.CurrentTransferDirection == AtmosDirection.Invalid)
+                {
                     otherTile2.PressureDifference = otherTile2.MonstermosInfo.CurrentTransferAmount;
+                }
 
                 if (otherTile.Air != null && otherTile.Air.Pressure - sum > SpacingMinGas * 0.1f)
                 {
@@ -654,9 +656,6 @@ namespace Content.Server.Atmos.EntitySystems
                 Merge(otherTile.Air, tile.Air.Remove(amount));
                 InvalidateVisuals(tile.GridIndex, tile.GridIndices);
                 InvalidateVisuals(otherTile.GridIndex, otherTile.GridIndices);
-                ConsiderPressureDifference(gridAtmosphere, tile, direction, amount);
-                InvalidateVisuals(ent, tile);
-                InvalidateVisuals(ent, otherTile);
             }
         }
 

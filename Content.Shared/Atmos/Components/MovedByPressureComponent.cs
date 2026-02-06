@@ -38,8 +38,6 @@ public sealed partial class MovedByPressureComponent : Component
     public const float MinPushForce = 0.1f;
     public const float MinPushForceSquared = MinPushForce * MinPushForce;
 
-    [DataField, AutoNetworkedField]
-    public bool Enabled = true;
 
     [ViewVariables, AutoNetworkedField]
     public Vector2 CurrentWind;

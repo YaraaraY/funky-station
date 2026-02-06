@@ -17,7 +17,6 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> SpaceWind =
         CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY);
-        CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     How much pressure difference turns into wind each atmos tick.

@@ -32,6 +32,7 @@
 
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
+using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Shared.Atmos.EntitySystems;
@@ -44,10 +45,10 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server.Atmos.EntitySystems;
 
@@ -67,6 +68,7 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
     [Dependency] private readonly GasTileOverlaySystem _gasTileOverlaySystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] public readonly PuddleSystem Puddle = default!;
@@ -97,9 +99,9 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
         InitializeGridAtmosphere();
         InitializeMap();
 
-        _atmosQuery = GetEntityQuery<GridAtmosphereComponent>();
         _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>();
         _mapGridQuery = GetEntityQuery<MapGridComponent>();
+        _atmosQuery = GetEntityQuery<GridAtmosphereComponent>();
         _airtightQuery = GetEntityQuery<AirtightComponent>();
         _firelockQuery = GetEntityQuery<FirelockComponent>();
 
